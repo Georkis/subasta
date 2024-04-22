@@ -1,0 +1,13 @@
+#todo setup
+hwi_oauth:
+  resource_owners:
+    oauth:
+      type:                google
+      client_id:           <client_id>
+      client_secret:       <client_secret>
+      options:
+        csrf: true
+        refresh_on_expire: true
+#        state:
+#          some: parameter
+#          some-other: parameter

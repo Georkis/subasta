@@ -18,8 +18,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
+    #[ORM\Column(length: 180, unique: true)]
+    private ?string $username = null;
+
     #[ORM\Column]
     private array $roles = [];
+
+    #[ORM\Column(type: 'string', nullable: true)]
+    private ?string $googleAuthenticatorSecret;
 
     /**
      * @var string The hashed password
@@ -30,6 +36,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getUsername():string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(string $username): static
+    {
+        return $this->username = $username;
     }
 
     public function getEmail(): ?string
