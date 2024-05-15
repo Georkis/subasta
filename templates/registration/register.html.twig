@@ -1,0 +1,46 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Registro{% endblock %}
+
+{% block body %}
+    <section id="services" class="services mt-5">
+        <div class="container" data-aos="fade-up">
+            <div class="section-title">
+                <h2>Registrarse</h2>
+                <p>En horabuena estas al punto registrarte en nuestra web.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Regístrarte</h4>
+                        </div>
+                        <div class="card-body">
+                            {% for flash_error in app.flashes('verify_email_error') %}
+                                <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                            {% endfor %}
+
+                            {{ form_errors(registrationForm) }}
+
+                            {{ form_start(registrationForm) }}
+                            {{ form_row(registrationForm.username) }}
+                            {{ form_row(registrationForm.email) }}
+                            {{ form_row(registrationForm.plainPassword, {
+                                label: 'Contraseña'
+                            }) }}
+                            {{ form_row(registrationForm.agreeTerms) }}
+                            <div class="inline-flex">
+                                <button type="submit" class="btn btn-warning">Regístrarse</button>
+                                {{ form_end(registrationForm) }}
+                                <a href="{{ path('app_login') }}" class="btn btn-success">Autentícarse</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Services Section -->
+
+{% endblock %}
